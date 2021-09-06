@@ -6,9 +6,8 @@
 namespace gd {
 	class TextInputDelegate;
 
-	#pragma runtime_checks("s", off)
 	class CCTextInputNode : public cocos2d::CCLayer, public cocos2d::CCIMEDelegate, public cocos2d::CCTextFieldDelegate {
-	protected:
+	public:
 		PAD(0x4);
 		std::string m_sCaption;
 		PAD(0x8);
@@ -27,7 +26,6 @@ namespace gd {
 		bool m_bUnknown2;
 		bool m_bForceOffset;
 
-	public:
 		//own vtable
 		void onClickTrackNode(bool) {}
 
@@ -69,7 +67,6 @@ namespace gd {
 		cocos2d::CCLabelBMFont* getPlaceholderLabel() { return m_pPlaceholderLabel; }
 		void setDelegate(TextInputDelegate* delegate) { m_delegate = delegate; }
 	};
-	#pragma runtime_checks("s", restore)
 }
 
 #endif
