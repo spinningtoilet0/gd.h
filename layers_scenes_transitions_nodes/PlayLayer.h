@@ -151,6 +151,14 @@ namespace gd {
 		bool unk535; // gets set to false when you cheat
 		bool m_disableGravityEffect; // 0x536 comes from gv_0072
 		PAD(1);
+
+		float timeForXPos2(float x, bool idk) {
+			float value;
+			__asm movss xmm1, x;
+			reinterpret_cast<void(__thiscall*)(PlayLayer*, bool)>(base + 0x208800)(this, idk);
+			__asm movss value, xmm0
+			return value;
+		}
 	};
 }
 
