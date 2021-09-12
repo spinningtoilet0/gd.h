@@ -151,6 +151,13 @@ namespace gd {
 		bool unk535; // gets set to false when you cheat
 		bool m_disableGravityEffect; // 0x536 comes from gv_0072
 		PAD(1);
+
+		static PlayLayer* create(GJGameLevel* level) {
+			return reinterpret_cast<PlayLayer*(__fastcall*)(GJGameLevel*)>(gd::base + 0x1fb6d0)(level);
+		}
+		void addObject(GameObject* object) {
+			reinterpret_cast<void(__thiscall*)(PlayLayer*, GameObject*)>(gd::base + 0x2017e0)(this, object);
+		}
 	};
 }
 

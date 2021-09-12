@@ -115,6 +115,14 @@ namespace gd {
 		bool unk2C0;
 		bool unk2C1;
 		PAD(6); // this should be 10 but im too lazy to fix playlayer rn
+		
+		void pushButton(int unk, bool player1) {
+			return reinterpret_cast<void(__thiscall*)(GJBaseGameLayer*, int, bool)>(base + 0x111500)(this, unk, player1);
+		}
+
+		void releaseButton(int unk, bool player1) {
+			return reinterpret_cast<void(__thiscall*)(GJBaseGameLayer*, int, bool)>(base + 0x111660)(this, unk, player1);
+		}
 	};
 }
 
