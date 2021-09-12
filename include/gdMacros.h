@@ -13,7 +13,9 @@
 *
 * Based on line number, to be standard C / C++ compatible.
 */
+#ifndef PAD
 #define PAD(size) char __STR_CAT__(__, __STR_CAT__(pad, __LINE__))[size] = {};
+#endif
 
 /** __WARN_DEBUG__
 * Set this macro to 0 to disable warnings when compiling in debug.

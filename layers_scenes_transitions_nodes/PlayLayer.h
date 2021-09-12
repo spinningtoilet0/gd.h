@@ -155,8 +155,17 @@ namespace gd {
 		static PlayLayer* create(GJGameLevel* level) {
 			return reinterpret_cast<PlayLayer*(__fastcall*)(GJGameLevel*)>(gd::base + 0x1fb6d0)(level);
 		}
+
 		void addObject(GameObject* object) {
 			reinterpret_cast<void(__thiscall*)(PlayLayer*, GameObject*)>(gd::base + 0x2017e0)(this, object);
+		}
+
+		float timeForXPos2(float x, bool idk) {
+			float value;
+			__asm movss xmm1, x;
+			reinterpret_cast<void(__thiscall*)(PlayLayer*, bool)>(base + 0x208800)(this, idk);
+			__asm movss value, xmm0
+			return value;
 		}
 	};
 }
