@@ -116,8 +116,7 @@ namespace gd {
 		PAD(7);
 		UILayer* m_uiLayer; // 0x484
 		GJGameLevel* m_level; // 0x488
-		float m_cameraX; // 0x48C
-		float m_cameraY; // 0x490
+		cocos2d::CCPoint m_cameraPos; // 0x48C
 		bool m_isTestMode; // 0x494
 		bool m_isPracticeMode; // 0x495
 		bool unk496;
