@@ -12,6 +12,8 @@ namespace gd {
     class SongInfoObject;
     class GJSpecialColorSelect;
     class CCCircleWave;
+    class CurrencyRewardLayer;
+    class DialogLayer;
 
     enum GJSongError {
         kGJSongErrorUnknown = 0,
@@ -119,7 +121,15 @@ namespace gd {
     };
 
     class CCCircleWaveDelegate {
-        void circleWaveWillBeRemoved(CCCircleWave*) {}
+        virtual void circleWaveWillBeRemoved(CCCircleWave*) {}
+    };
+
+    class CurrencyRewardDelegate {
+        virtual void currencyWillExit(CurrencyRewardLayer*);
+    };
+
+    class DialogDelegate {
+        virtual void dialogClosed(DialogLayer*);
     };
 }
 
