@@ -215,6 +215,9 @@ namespace gd {
 				base + 0xCF8F0
 				)(frame);
 		}
+		static GameObject* createWithKey(int key) {
+			return reinterpret_cast<GameObject*(__fastcall*)(int)>(gd::base + 0xcf4f0)(key);
+		}
 		static GameObject* objectFromString(std::string str, bool unknown) {
 			auto pRet = reinterpret_cast<GameObject* (__fastcall*)(std::string, bool)>(
 				base + 0xEBE50

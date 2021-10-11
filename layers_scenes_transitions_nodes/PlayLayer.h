@@ -20,9 +20,8 @@ namespace gd {
 	using StartPosObject = gd::GameObject;
 	class CheckpointObject;
 
-	class PlayLayer : public GJBaseGameLayer, public CCCircleWaveDelegate {
+	class PlayLayer : public GJBaseGameLayer, public CCCircleWaveDelegate, public CurrencyRewardDelegate, public DialogDelegate {
 	public:
-		PAD(12);
 		unsigned int unk2D8;
 		bool unk2DC;
 		bool m_hasCheated; // 0x2DD by taking less than 30s to beat lvl
@@ -116,8 +115,7 @@ namespace gd {
 		PAD(7);
 		UILayer* m_uiLayer; // 0x484
 		GJGameLevel* m_level; // 0x488
-		float m_cameraX; // 0x48C
-		float m_cameraY; // 0x490
+		cocos2d::CCPoint m_cameraPos; // 0x48C
 		bool m_isTestMode; // 0x494
 		bool m_isPracticeMode; // 0x495
 		bool unk496;
@@ -151,6 +149,14 @@ namespace gd {
 		bool unk535; // gets set to false when you cheat
 		bool m_disableGravityEffect; // 0x536 comes from gv_0072
 		PAD(1);
+
+		static PlayLayer* create(GJGameLevel* level) {
+			return reinterpret_cast<PlayLayer*(__fastcall*)(GJGameLevel*)>(gd::base + 0x1fb6d0)(level);
+		}
+
+		void addObject(GameObject* object) {
+			reinterpret_cast<void(__thiscall*)(PlayLayer*, GameObject*)>(gd::base + 0x2017e0)(this, object);
+		}
 
 		float timeForXPos2(float x, bool idk) {
 			float value;
