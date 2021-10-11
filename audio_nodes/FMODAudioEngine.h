@@ -56,7 +56,7 @@ namespace gd {
 		}
 		// inlined on windows
 		bool isBackgroundMusicPlaying() {
-			const auto addr = GetProcAddress(GetModuleHandle("fmod.dll"), "?isPlaying@ChannelControl@FMOD@@QAG?AW4FMOD_RESULT@@PA_N@Z");
+			const auto addr = GetProcAddress(GetModuleHandleA("fmod.dll"), "?isPlaying@ChannelControl@FMOD@@QAG?AW4FMOD_RESULT@@PA_N@Z");
 			bool ret;
 			reinterpret_cast<int(__stdcall*)(void*, bool*)>(addr)(this->m_pGlobalChannel, &ret);
 			return ret;
