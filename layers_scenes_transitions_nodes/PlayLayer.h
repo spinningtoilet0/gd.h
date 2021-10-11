@@ -165,6 +165,10 @@ namespace gd {
 			__asm movss value, xmm0
 			return value;
 		}
+
+		void resetLevel() {
+			reinterpret_cast<void(__thiscall*)(PlayLayer*)>(gd::base + 0x20BF00)(this);
+		}
 	};
 }
 
