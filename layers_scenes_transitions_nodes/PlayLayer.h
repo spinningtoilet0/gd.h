@@ -169,6 +169,10 @@ namespace gd {
 		void resetLevel() {
 			reinterpret_cast<void(__thiscall*)(PlayLayer*)>(gd::base + 0x20BF00)(this);
 		}
+
+		void pauseGame() {
+			reinterpret_cast<void(__thiscall*)(PlayLayer*)>(gd::base + 0x20d3c0)(this);
+		}
 	};
 }
 
