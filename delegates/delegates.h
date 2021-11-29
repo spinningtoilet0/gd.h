@@ -1,5 +1,5 @@
 #ifndef DELEGATES_H
-#define DELEGATES_h
+#define DELEGATES_H
 
 #include <gd.h>
 

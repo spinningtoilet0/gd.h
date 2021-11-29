@@ -165,6 +165,14 @@ namespace gd {
 			__asm movss value, xmm0
 			return value;
 		}
+
+		void resetLevel() {
+			reinterpret_cast<void(__thiscall*)(PlayLayer*)>(gd::base + 0x20BF00)(this);
+		}
+
+		void pauseGame() {
+			reinterpret_cast<void(__thiscall*)(PlayLayer*)>(gd::base + 0x20d3c0)(this);
+		}
 	};
 }
 

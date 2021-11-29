@@ -20,6 +20,10 @@ namespace gd {
 					base + 0x1E5570
 					)(this, callback, on, menu, caption, pos);
 		}
+
+		void onRestart(cocos2d::CCObject* sender) {
+			return reinterpret_cast<void(__thiscall*)(PauseLayer*, cocos2d::CCObject*)>(base + 0x1e6040)(this, sender);
+		}
 	};
 }
 
