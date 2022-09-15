@@ -173,6 +173,12 @@ namespace gd {
 		void pauseGame() {
 			reinterpret_cast<void(__thiscall*)(PlayLayer*)>(gd::base + 0x20d3c0)(this);
 		}
+
+		// this function does not affect stats (at least i hope not)
+		// it gets the % from m_lastDeathPercent
+		void showNewBest(bool new_reward, int orbs, int diamonds, bool demon_key, bool unk, bool dont_show_new_best_text) {
+			reinterpret_cast<void(__thiscall*)(PlayLayer*, bool, int, int, bool, bool, bool)>(gd::base + 0x1fe3a0)(this, new_reward, orbs, diamonds, demon_key, unk, dont_show_new_best_text);
+		}
 	};
 }
 
