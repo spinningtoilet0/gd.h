@@ -46,7 +46,7 @@ namespace gd {
 			m_cPlaceholderColor = color;
 			this->refreshLabel();
 		}
-		void setLabelPlaceholerScale(float scale) {
+		void setLabelPlaceholderScale(float scale) {
 			m_fPlaceholderScale = scale;
 			this->refreshLabel();
 		}

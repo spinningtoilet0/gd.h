@@ -18,6 +18,8 @@ namespace gd {
 	}
 }
 
+#include "gd_string.h"
+
 namespace FMOD {
 	class System;
 	class Sound;
@@ -80,6 +82,7 @@ enum FMOD_RESULT {};
 #include "manager_nodes/GJEffectManager.h"
 #include "manager_nodes/MusicDownloadManager.h"
 #include "manager_nodes/ObjectToolbox.h"
+#include "manager_nodes/GameStatsManager.h"
 
 #include "menu_nodes/CCMenuItemSpriteExtra.h"
 #include "menu_nodes/CCMenuItemToggler.h"

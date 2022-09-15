@@ -15,19 +15,19 @@ namespace gd {
     class GJGameLevel : public cocos2d::CCNode {
     public:
         cocos2d::CCDictionary *lastBuildSave;
-
+        // x = rand - seed
         int levelID_rand; // levelID + seed = levelID_rand
         int levelID_seed;
         int levelID;
 
-        std::string levelName;
-        std::string levelDesc;
-        std::string levelString;
-        std::string userName;
-        std::string recordString;
+        gd::string levelName;
+        gd::string levelDesc;
+        gd::string levelString;
+        gd::string userName;
+        gd::string recordString;
 
-        std::string uploadDate;
-        std::string updateDate;
+        gd::string uploadDate;
+        gd::string updateDate;
 
         int userID_rand;
         int userID_seed;
@@ -193,18 +193,8 @@ namespace gd {
         bool highObjectsEnabled;
         std::string personalBests;
 
-        // this function is inlined on pc builds
-        static GJGameLevel *create() {
-            auto pRet = new GJGameLevel();
-
-            if (pRet && pRet->init()) {
-                pRet->autorelease();
-                return pRet;
-            } else {
-                delete pRet;
-                pRet = nullptr;
-                return nullptr;
-            }
+        static GJGameLevel* create() {
+            return reinterpret_cast<GJGameLevel*(__fastcall*)()>(base + 0xBD2B0)();
         }
 
         std::string getAudioFileName() {
