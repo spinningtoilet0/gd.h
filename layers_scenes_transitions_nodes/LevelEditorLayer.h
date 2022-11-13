@@ -15,6 +15,8 @@ namespace gd {
         int m_currentLayer;
         PAD(0x2c)
         EditorUI* m_editorUI;
+        PAD(0x4)
+        cocos2d::CCArray* m_undoObjects;
 
         void removeObject(GameObject * obj, bool idk) {
             reinterpret_cast<void(__thiscall*)(
@@ -41,6 +43,26 @@ namespace gd {
         }
     };
 
+    enum class UndoCommand {
+        Delete = 1,
+        New = 2,
+        Paste = 3,
+        DeleteMulti = 4,
+        Transform = 5,
+        Select = 6,
+    };
+
+    class UndoObject : public cocos2d::CCObject {
+    public:
+        static UndoObject* createWithArray(cocos2d::CCArray* arr, UndoCommand command) {
+            return reinterpret_cast<UndoObject*(__fastcall*)(cocos2d::CCArray*, UndoCommand)>(base + 0x16bee0)(arr, command);
+        }
+
+        GameObject* m_singleObject;
+        UndoCommand m_command;
+        cocos2d::CCArray* m_objects;
+        bool m_redo;
+    };
 }
 
 #endif

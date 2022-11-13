@@ -5,7 +5,19 @@
 
 namespace gd {
 
-class EditButtonBar : public cocos2d::CCNode {};
+class EditButtonBar : public cocos2d::CCNode {
+public:
+    cocos2d::CCPoint m_unkEC;
+    int m_unkF4;
+    bool m_unkF8;
+    cocos2d::CCArray* m_buttonArray;
+
+    void loadFromItems(cocos2d::CCArray* buttons, int rowCount, int columnCount, bool idk) {
+        reinterpret_cast<void(__thiscall*)(EditButtonBar*, cocos2d::CCArray*, int, int, bool)>(base + 0x6e5e0)
+            (this, buttons, rowCount, columnCount, idk);
+    }
+
+};
 class GJRotationControl : public cocos2d::CCLayer {};
 class GJScaleControl : public cocos2d::CCLayer {};
 
@@ -25,7 +37,8 @@ class EditorUI : public cocos2d::CCLayer,
         EditButtonBar* m_pEditButtonBar;
         PAD(0x4)
         cocos2d::CCArray* m_pUnknownArray;
-        PAD(0x28)
+        cocos2d::CCArray* m_sideButtonsArray;
+        PAD(0x24)
         cocos2d::CCLabelBMFont* m_pUnknownLabel;
         GJRotationControl* m_pRotationControl;
         PAD(0x10)
@@ -154,6 +167,35 @@ class EditorUI : public cocos2d::CCLayer,
             __asm movss xmm2, scale;
             reinterpret_cast<void(__thiscall*)(EditorUI*, cocos2d::CCArray*, cocos2d::CCPoint)>(base + 0x8f150)(this, objects, center);
         }
+
+        void onDuplicate(CCObject* sender) {
+            reinterpret_cast<void(__thiscall*)(EditorUI*, CCObject*)>(base + 0x87d20)(this, sender);
+        }
+
+        void rotateObjects(cocos2d::CCArray* objs, float rot, cocos2d::CCPoint center) {
+            reinterpret_cast<void(__vectorcall*)(
+                float, float, float, EditorUI*, int, cocos2d::CCArray*, cocos2d::CCPoint
+            )>(base + 0x8ee80)(0, 0, rot, this, 0, objs, center);
+            // y tf is this not needed
+            // __asm add esp, 12
+        }
+
+        CCMenuItemSpriteExtra* getSpriteButton(
+            const char* sprite,
+            cocos2d::SEL_MenuHandler callback,
+            cocos2d::CCMenu* menu,
+            float scale
+        ) {
+            return reinterpret_cast<CCMenuItemSpriteExtra*(__thiscall*)(
+                EditorUI*, const char*, cocos2d::SEL_MenuHandler,
+                cocos2d::CCMenu*, float
+            )>(
+                base + 0x78bf0
+            )(
+                this, sprite, callback, menu, scale
+            );
+        }
+
     };
 
 }
