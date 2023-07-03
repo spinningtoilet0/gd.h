@@ -20,14 +20,6 @@ namespace gd {
 
 #include "gd_string.h"
 
-namespace FMOD {
-	class System;
-	class Sound;
-	class Channel;
-	class DSP;
-}
-enum FMOD_RESULT;
-
 
 #include "GDProtocols.h"
 
